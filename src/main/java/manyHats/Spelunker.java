@@ -22,7 +22,7 @@ public class Spelunker implements Listener {
         && playerClassOptional.get().getPlayerClass() == ClassPlayer.PlayerClass.SPELUNKER) {
       if (isOre(block.getType())) {
         ((ExperienceOrb) block.getWorld().spawn(block.getLocation(), ExperienceOrb.class))
-            .setExperience(5);
+            .setExperience(MathUtility.getRandomNumber(1, 5));
       }
     }
   }

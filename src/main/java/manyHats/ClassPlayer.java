@@ -8,7 +8,7 @@ public class ClassPlayer {
   private PlayerClass playerClass;
 
   public enum PlayerClass {
-    RANGER,
+    GOURMET,
     ATLANTEAN,
     SPELUNKER,
     NONE

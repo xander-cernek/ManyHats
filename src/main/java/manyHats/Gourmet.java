@@ -1,6 +1,7 @@
 package manyHats;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Monster;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -9,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Objects;
 import java.util.Optional;
 
-public class FoodRanger implements Listener {
+public class Gourmet implements Listener {
 
   @EventHandler
   public void onKill(EntityDeathEvent e) {
@@ -18,8 +19,10 @@ public class FoodRanger implements Listener {
 
       Optional<ClassPlayer> player = PlayerManager.getPlayer(killer);
 
-      if (player.isPresent() && player.get().getPlayerClass() == ClassPlayer.PlayerClass.RANGER) {
-        e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), loot());
+      if (player.isPresent() && player.get().getPlayerClass() == ClassPlayer.PlayerClass.GOURMET) {
+        if (e.getEntity() instanceof Monster) {
+          e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), loot());
+        }
       }
     } catch (Exception ex) {
       System.out.println(ex.toString());

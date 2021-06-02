@@ -12,7 +12,7 @@ public class ManyHats extends JavaPlugin {
   public void onEnable() {
     getLogger().info("Apple loaded. Ligma balls Ben");
     getServer().getPluginManager().registerEvents(new MyListener(), this);
-    getServer().getPluginManager().registerEvents(new FoodRanger(), this);
+    getServer().getPluginManager().registerEvents(new Gourmet(), this);
     getServer().getPluginManager().registerEvents(new Atlantean(), this);
     getServer().getPluginManager().registerEvents(new Spelunker(), this);
   }
@@ -32,7 +32,7 @@ public class ManyHats extends JavaPlugin {
             case "ranger":
               sender.sendMessage(
                   ChatColor.DARK_GREEN + "Welcome to the mysterious Culinary Rangers");
-              PlayerManager.addPlayer(new ClassPlayer(p, ClassPlayer.PlayerClass.RANGER));
+              PlayerManager.addPlayer(new ClassPlayer(p, ClassPlayer.PlayerClass.GOURMET));
               break;
             case "atlantean":
               sender.sendMessage(ChatColor.BLUE + "Well met, Atlantean Heir");
