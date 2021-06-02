@@ -1,0 +1,9 @@
+name: ManyHats
+main: manyHats.ManyHats
+version: 1.0
+commands:
+  setClass:
+    description: Set your class
+    usage: /<command> [class]
+    permission: <plugin name>.basic
+    permission-message: You don't have <permission>
