@@ -1,2 +1,12 @@
-apple/MyListener.class
-apple/Apple.class
+manyHats/model/ManyHatsPlayer.class
+manyHats/util/Dao.class
+manyHats/model/ManyHatsPlayer$PlayerClass.class
+manyHats/Command.class
+manyHats/ManyHats.class
+manyHats/util/MathUtility.class
+manyHats/classes/Gourmet.class
+manyHats/util/Dao$1.class
+manyHats/classes/Atlantean.class
+manyHats/model/ManyHatsPlayer$PlayerClassMeta.class
+manyHats/util/PlayerManager.class
+manyHats/classes/Spelunker.class

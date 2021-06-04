@@ -1,9 +1,10 @@
 name: ManyHats
 main: manyHats.ManyHats
-version: 1.0
+version: 1.1
 commands:
   setClass:
     description: Set your class
     usage: /<command> [class]
-    permission: <plugin name>.basic
+    permission: ManyHats.basic
     permission-message: You don't have <permission>
+api-version: 1.13

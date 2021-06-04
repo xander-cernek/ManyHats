@@ -1,18 +1,22 @@
 package manyHats.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.Expose;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.bukkit.entity.Player;
 
 // TODO Make XP stuff better
 @Setter
 @Getter
+@AllArgsConstructor
+@ToString
 public class ManyHatsPlayer {
 
-  @JsonIgnore private final Player player;
+  private transient Player player;
 
-  private PlayerClassMeta playerClassMeta;
+  @Expose private PlayerClassMeta playerClassMeta;
 
   public enum PlayerClass {
     GOURMET,
@@ -21,23 +25,35 @@ public class ManyHatsPlayer {
     NONE
   }
 
+  @Getter
+  @AllArgsConstructor
+  @ToString
+  public static class PlayerClassMeta {
+    @Expose private final PlayerClass playerClass;
+    @Expose private final int classLevel;
+    @Expose private final int xpToNextLevel;
+
+    public PlayerClassMeta(PlayerClass playerClass) {
+      this.playerClass = playerClass;
+      classLevel = 1;
+      xpToNextLevel = 1000;
+    }
+  }
+
+  public boolean hasClass() {
+    if (playerClassMeta == null) {
+      return false;
+    }
+    return playerClassMeta.getPlayerClass() != PlayerClass.NONE;
+  }
+
   public ManyHatsPlayer(Player player) {
     this.player = player;
-    this.playerClassMeta =
-        PlayerClassMeta.builder()
-            .playerClass(PlayerClass.NONE)
-            .classLevel(1)
-            .xpToNextLevel(1000)
-            .build();
+    this.playerClassMeta = new PlayerClassMeta(PlayerClass.NONE);
   }
 
   public ManyHatsPlayer(Player player, PlayerClass playerClass) {
     this.player = player;
-    this.playerClassMeta =
-        PlayerClassMeta.builder()
-            .playerClass(playerClass)
-            .classLevel(1)
-            .xpToNextLevel(1000)
-            .build();
+    this.playerClassMeta = new PlayerClassMeta(playerClass);
   }
 }

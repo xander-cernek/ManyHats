@@ -38,18 +38,24 @@ public class Gourmet implements Listener {
           && player.get().getPlayerClassMeta().getPlayerClass()
               == ManyHatsPlayer.PlayerClass.GOURMET) {
         if (e.getEntity() instanceof Monster) {
-          e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), loot());
+          try {
+            e.getEntity().getWorld().dropItem(e.getEntity().getLocation(), loot());
+          } catch (IllegalArgumentException e2) {
+            // eat this, "Cannot spawn Air" ;)
+          }
         }
       }
     }
   }
 
   private ItemStack loot() {
-    int number = MathUtility.getRandomNumber(0, 1);
+    int number = MathUtility.getRandomNumber(0, 2);
     if (number == 0) {
-      return new ItemStack(Material.COOKED_SALMON, MathUtility.getRandomNumber(0, 1));
+      log.info(String.format("Dropping %s", Material.COOKED_SALMON));
+      return new ItemStack(Material.COOKED_SALMON, MathUtility.getRandomNumber(0, 2));
     } else {
-      return new ItemStack(Material.COOKED_COD, MathUtility.getRandomNumber(0, 1));
+      log.info(String.format("Dropping %s", Material.COOKED_COD));
+      return new ItemStack(Material.COOKED_COD, MathUtility.getRandomNumber(0, 2));
     }
   }
 }

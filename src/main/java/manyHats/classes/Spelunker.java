@@ -1,5 +1,6 @@
 package manyHats.classes;
 
+import lombok.extern.java.Log;
 import manyHats.model.ManyHatsPlayer;
 import manyHats.util.MathUtility;
 import manyHats.util.PlayerManager;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Log
 public class Spelunker implements Listener {
 
   private final PlayerManager playerManager;
@@ -36,7 +38,7 @@ public class Spelunker implements Listener {
             == ManyHatsPlayer.PlayerClass.SPELUNKER) {
       if (isOre(block.getType())) {
         ((ExperienceOrb) block.getWorld().spawn(block.getLocation(), ExperienceOrb.class))
-            .setExperience(MathUtility.getRandomNumber(1, 5));
+            .setExperience(MathUtility.getRandomNumber(1, 6));
       }
     }
   }

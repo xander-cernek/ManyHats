@@ -22,7 +22,13 @@ public class Atlantean implements Listener {
   @EventHandler
   public void onJoin(PlayerJoinEvent e) {
     Optional<ManyHatsPlayer> playerOptional = playerManager.getPlayer(e.getPlayer().getName());
-    playerOptional.ifPresent(Atlantean::applyEffect);
+    if (playerOptional.isPresent()) {
+      Atlantean.applyEffect(playerOptional.get());
+    } else {
+      playerManager.addPlayer(e.getPlayer());
+      Optional<ManyHatsPlayer> playerOptional2 = playerManager.getPlayer(e.getPlayer().getName());
+      playerOptional2.ifPresent(Atlantean::applyEffect);
+    }
   }
 
   /** Public b/c accessed from the main command driver */
